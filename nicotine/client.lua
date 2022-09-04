@@ -17,7 +17,7 @@ Citizen.CreateThread
             end
         end
 
-        CreateObject
+        CreateObject    -- Create a random marijuana plant cause why the fuck not
         (
             GetHashKey('prop_weed_01'), -- Hash of the prop ID
             -1074.1231689453,           -- X Coordinate
