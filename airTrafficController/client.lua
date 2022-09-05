@@ -3,33 +3,26 @@ pilotHash = GetHashKey('s_m_m_pilot_01')
 
 flightPath = 
 {
-    taxi =
-    {
-        x = -1504.3935546875,
-        y = -2852.9709472656,
-        z = 14.560501098633
-    },
+    taxi = { x = -1504.393, y = -2852.970, z = 14.560 },
 
-    ascent =
-    {
-        x = -1872.6486816406,
-        y = -2645.4487304688,
-        z = 86.175148010254
-    },
+    ascent = { x = -1872.648, y = -2645.448, z = 86.175 },
 
-    descent =
-    {
-        x = -3000.0,
-        y = 1400.0,
-        z = 1029.044
-    },
+    descent = { x = -3000.0, y = 1400.0, z = 1029.044 },
 
-    landing = 
-    {
-        x = 93.393,
-        y = 2846.236,
-        z = 206.568
-    }
+    landing = { x = 93.393, y = 2846.236, z = 206.568 }
+}
+
+timers =
+{
+    LS_startAscent = 16510,
+    LS_retractGear = 500,
+    LS_closeGearCovers = 250,
+
+    SS_startDescent = 11160,
+    SS_prepareToLand = 150000,
+    SS_landPlane = 115000,
+    SS_openGearCovers = 500,
+    SS_deployGear = 250    
 }
 
 RequestModel(airplaneHash)
@@ -95,7 +88,7 @@ Citizen.CreateThread
             true
         )
         
-        Citizen.Wait(16510)
+        Citizen.Wait(timers.LS_startAscent)
         
         TaskVehicleDriveToCoord
         (
@@ -112,12 +105,12 @@ Citizen.CreateThread
             true
         )
 
-        Citizen.Wait(500)
+        Citizen.Wait(timers.LS_retractGear)
         ControlLandingGear(airplane, 3)
-        Citizen.Wait(250)
+        Citizen.Wait(timers.LS_closeGearCovers)
         ControlLandingGear(airplane, 1)
 
-        Citizen.Wait(11160)
+        Citizen.Wait(timers.SS_startDescent)
 
         TaskVehicleDriveToCoord
         (
@@ -134,7 +127,7 @@ Citizen.CreateThread
             true
         )
 
-        Citizen.Wait(150000)
+        Citizen.Wait(timers.SS_prepareToLand)
 
         TaskVehicleDriveToCoord
         (
@@ -151,11 +144,11 @@ Citizen.CreateThread
             true
         )
 
-        Citizen.Wait(115000)
+        Citizen.Wait(SS_landPlane)
 
-        --Citizen.Wait(500)
+        --Citizen.Wait(SS_openGearCovers)
         ControlLandingGear(airplane, 2)
-        --Citizen.Wait(250)
+        --Citizen.Wait(SS_deployGear)
         ControlLandingGear(airplane, 0)
 
         TaskPlaneLand
