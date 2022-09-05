@@ -151,7 +151,7 @@ Citizen.CreateThread
             true
         )
 
-        Citizen.Wait(50000)
+        Citizen.Wait(115000)
 
         --Citizen.Wait(500)
         ControlLandingGear(airplane, 2)
@@ -162,11 +162,11 @@ Citizen.CreateThread
         (
             airplanePilot,              -- Plane to land.
             airplane,                   -- Pilot to land plane.
-            600.0,            -- Runway start X coordinate.
+            1055.5882568359,            -- Runway start X coordinate.
             3075.9333496094,            -- Runway start Y coordinate.
             42.022682189941,            -- Runway start Z coordinate.
-            1200.0,            -- Runway end X coordinate.
-            3250.4233398438,            -- Runway end Y coordinate.
+            1608.9467773438,            -- Runway end X coordinate.
+            3226.4233398438,            -- Runway end Y coordinate.
             41.585639953613             -- Runway end Z coordainte.
         )
     end
